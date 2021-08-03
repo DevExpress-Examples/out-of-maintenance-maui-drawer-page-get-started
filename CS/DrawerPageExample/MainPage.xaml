@@ -1,0 +1,36 @@
+<dxn:DrawerPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+                xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                xmlns:dxn="clr-namespace:DevExpress.Maui.Navigation;assembly=DevExpress.Maui.Navigation"
+                xmlns:local="clr-namespace:DrawerPageExample"
+                x:Class="DrawerPageExample.MainPage"
+                DrawerWidth="180"
+                DrawerShadowHeight="10"
+                DrawerShadowRadius="40"
+                DrawerShadowColor="#808080"
+                IsScrimEnabled="False">
+    <dxn:DrawerPage.BindingContext>
+        <local:MainViewModel/>
+    </dxn:DrawerPage.BindingContext>
+    <dxn:DrawerPage.DrawerContent>
+        <ListView x:Name="carBrandList" 
+                  ItemsSource="{Binding CarModelsByBrand}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextCell Text="{Binding BrandName}"/>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </dxn:DrawerPage.DrawerContent>
+    <dxn:DrawerPage.MainContent>
+        <ContentPage>
+            <ListView BindingContext="{x:Reference carBrandList}"
+                      ItemsSource="{Binding SelectedItem.CarModels}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextCell Text="{Binding FullName}"/>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </ContentPage>
+    </dxn:DrawerPage.MainContent>
+</dxn:DrawerPage>

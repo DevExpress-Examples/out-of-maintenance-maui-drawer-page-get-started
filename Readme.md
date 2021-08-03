@@ -1,3 +1,14 @@
+<!-- default file list -->
+*Files to look at*:
+
+* [Startup.cs](./CS/DrawerPageExample/Startup.cs)
+* [MainPage.xaml](./CS/DrawerPageExample/MainPage.xaml)
+* [MainPage.xaml.cs](./CS/DrawerPageExample/MainPage.xaml.cs)
+* [CarModel.cs](./CS/DrawerPageExample/CarModel.cs)
+* [CarBrandViewModel.cs](./CS/DrawerPageExample/CarBrandViewModel.cs)
+* [MainViewModel.cs](./CS/DrawerPageExample/MainViewModel.cs)
+<!-- default file list end -->
+
 # DevExpress Drawer Page for .NET MAUI
 
 This example allows you to get started with the [DrawerPage](http://docs.devexpress.com/MAUI/DevExpress.Maui.Navigation.DrawerPage) component - use it to add a [navigation drawer](https://material.io/design/components/navigation-drawer.html) to your .NET MAUI application.
@@ -17,9 +28,9 @@ The following step-by-step instructions describe how to create the same applicat
 Create a new .NET MAUI solution in Visual Studio 22 Preview.  
 Refer to the following Microsoft documentation for more information on how to get started with .NET MAUI: [.NET Multi-platform App UI](https://docs.microsoft.com/en-gb/dotnet/maui/).
 
-Add the DevExpress Drawer Page component to your solution as follows: 
-1. Register https://nuget.devexpress.com/free/api as a package source in Visual Studio, if you are not an active DevExpress [Universal](https://www.devexpress.com/subscriptions/universal.xml) customer or have not yet registered our [free Xamarin UI controls](https://www.devexpress.com/xamarin/).
-2. Install the **DevExpress.Maui.Navigation** package from your NuGet feed.
+Register https://nuget.devexpress.com/free/api as a package source in Visual Studio, if you are not an active DevExpress [Universal](https://www.devexpress.com/subscriptions/universal.xml) customer or have not yet registered our [free Xamarin UI controls](https://www.devexpress.com/xamarin/).
+
+Install the **DevExpress.Maui.Navigation** package from your NuGet feed.
 
 In the *Startup.cs* file, register a handler for the DevExpress DrawerPage:
 
@@ -44,7 +55,7 @@ namespace DrawerPageExample {
 }
 ```
 
-In the *MainPage.xaml* file, use the *dxn* prefix to declare the DevExpress.Maui.Navigation namespace and create a [DrawerPage](http://docs.devexpress.com/MAUI/DevExpress.Maui.Navigation.DrawerPage) instance:
+In the *MainPage.xaml* file, use the *dxn* prefix to declare the **DevExpress.Maui.Navigation** namespace and create a [DrawerPage](http://docs.devexpress.com/MAUI/DevExpress.Maui.Navigation.DrawerPage) instance:
 
 ```xaml
 <dxn:DrawerPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
@@ -53,6 +64,8 @@ In the *MainPage.xaml* file, use the *dxn* prefix to declare the DevExpress.Maui
              x:Class="DrawerPageExample.MainPage">
 </dxn:DrawerPage>
 ```
+
+In the *MainPage.xaml.cs* file, change the MainPage’s base class from ContentPage to DrawerPage:
 
 ```cs
 using DevExpress.Maui.Navigation;
@@ -85,7 +98,7 @@ namespace DrawerPageExample {
 }
 ```
 
-Create a **CarBrandViewModel** class that defines content for the drawer view: car make and corresponding models. The application will display brands in the drawer and matching models in the main content area:
+Create a **CarBrandViewModel** class that defines content for the drawer page: car make and corresponding models. The application will display brands in the drawer and matching models in the main content area:
 
 ```cs
 using System;
