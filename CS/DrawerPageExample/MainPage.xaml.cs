@@ -6,5 +6,10 @@ namespace DrawerPageExample {
 			InitializeComponent();
             IsDrawerOpened = true;
 		}
+
+        protected override void OnAppearing() {
+            base.OnAppearing();
+            carBrandList.SelectedItem = ((MainViewModel)BindingContext).CarModelsByBrand[0];
+        }
     }
 }

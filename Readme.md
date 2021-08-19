@@ -195,8 +195,8 @@ namespace DrawerPageExample {
 ## Specify the Drawer Page Content
 In the *MainPage.xaml* file:
 1. Set the **DrawerPage.BindingContext** property to a **MainViewModel** object.
-2. Set the [DrawerPage.DrawerContent](http://docs.devexpress.com/MAUI/DevExpress.Maui.Navigation.DrawerPage.DrawerContent) property to a **ListView** object. Bind the list’s **ItemsSource** property to the **CarModelsByBrand** property of the view model, and set up list items to display brand names.
-3. Set the [DrawerPage.MainContent](http://docs.devexpress.devx/MAUI/DevExpress.Maui.Navigation.DrawerPage.MainContent) property to a **ListView** object. Specify the list’s **ItemsSource** binding. The bound list should contain car models corresponding to the selected brand.
+2. Set the [DrawerPage.DrawerContent](http://docs.devexpress.com/MAUI/DevExpress.Maui.Navigation.DrawerPage.DrawerContent) property to a grid with a **ListView** object. Bind the list’s **ItemsSource** property to the **CarModelsByBrand** property of the view model, and set up list items to display brand names.
+3. Set the [DrawerPage.MainContent](http://docs.devexpress.devx/MAUI/DevExpress.Maui.Navigation.DrawerPage.MainContent) property to a grid with a **ListView** object. Specify the list’s **ItemsSource** binding. The bound list should contain car models corresponding to the selected brand.
 
 ```xaml
 <dxn:DrawerPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
@@ -208,25 +208,33 @@ In the *MainPage.xaml* file:
         <local:MainViewModel/>
     </dxn:DrawerPage.BindingContext>
     <dxn:DrawerPage.DrawerContent>
-        <ListView x:Name="carBrandList" 
-                    ItemsSource="{Binding CarModelsByBrand}">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <TextCell Text="{Binding BrandName}" />
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
-    </dxn:DrawerPage.DrawerContent>
-    <dxn:DrawerPage.MainContent>
-        <ContentPage>
-            <ListView BindingContext="{x:Reference carBrandList}"
-                      ItemsSource="{Binding SelectedItem.CarModels}">
+        <Grid HeightRequest="800">
+            <ListView x:Name="carBrandList" 
+                      ItemsSource="{Binding CarModelsByBrand}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <TextCell Text="{Binding FullName}"/>
+                        <ViewCell>
+                            <Label Padding="5" Text="{Binding BrandName}" />
+                        </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
+        </Grid>
+    </dxn:DrawerPage.DrawerContent>
+    <dxn:DrawerPage.MainContent>
+        <ContentPage>
+            <Grid HeightRequest="800">
+                <ListView BindingContext="{x:Reference carBrandList}"
+                          ItemsSource="{Binding SelectedItem.CarModels}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Label Padding="5" Text="{Binding FullName}" />
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Grid>
         </ContentPage>
     </dxn:DrawerPage.MainContent>
 </dxn:DrawerPage>
