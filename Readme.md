@@ -81,7 +81,7 @@ In the *MauiProgramp.cs* file, register a handler for the DevExpress DrawerPage:
 using Microsoft.Maui;
 using Microsoft.Maui.Hosting;
 using Microsoft.Maui.Controls.Hosting;
-using DevExpress.Maui.Navigation;
+using DevExpress.Maui;
 
 namespace DrawerPageExample {
     public static class MauiProgram {
@@ -89,7 +89,7 @@ namespace DrawerPageExample {
             var builder = MauiApp.CreateBuilder();
             builder
                 .UseMauiApp<App>()
-                .ConfigureMauiHandlers((handlers => handlers.AddHandler<DrawerPage, DrawerPageHandler>()))
+                .UseDevExpress()
                 .ConfigureFonts(fonts =>
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
