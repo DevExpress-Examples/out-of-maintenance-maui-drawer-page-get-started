@@ -1,11 +1,22 @@
-﻿using DevExpress.Maui.Navigation;
+﻿using System;
+using System.Linq;
+using Microsoft.Maui.Controls;
 
 namespace DrawerPageExample {
-	public partial class MainPage : DrawerPage {
+	public partial class MainPage : FlyoutPage
+    {
         public MainPage() {
 			InitializeComponent();
-            IsDrawerOpened = true;
-		}
+
+            Flyout.IsVisible = true;
+            IsPresented = true;
+            carBrandList.SelectionChanged += OnSelectionChanged;
+        }
+
+        void OnSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            IsPresented = false;
+        }
 
         protected override void OnAppearing() {
             base.OnAppearing();

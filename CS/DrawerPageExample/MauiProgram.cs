@@ -1,8 +1,7 @@
 ﻿using Microsoft.Maui;
 using Microsoft.Maui.Hosting;
 using Microsoft.Maui.Controls.Hosting;
-using DevExpress.Maui.Navigation;
-using DevExpress.Maui;
+using Microsoft.Maui.Controls.Compatibility.Hosting;
 
 namespace DrawerPageExample {
     public static class MauiProgram {
@@ -10,11 +9,11 @@ namespace DrawerPageExample {
             var builder = MauiApp.CreateBuilder();
             builder
                 .UseMauiApp<App>()
-                .UseDevExpress()
                 .ConfigureFonts(fonts =>
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
-                });
+                })
+                .UseMauiCompatibility();
             return builder.Build();
         }
     }
