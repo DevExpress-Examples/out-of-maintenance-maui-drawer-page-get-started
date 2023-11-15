@@ -1,4 +1,3 @@
-﻿using DevExpress.Maui.Core.Themes;
 using Microsoft.Maui;
 using Microsoft.Maui.Controls;
 using Microsoft.Maui.Controls.PlatformConfiguration.WindowsSpecific;
